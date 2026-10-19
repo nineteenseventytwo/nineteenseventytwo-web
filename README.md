@@ -1,6 +1,6 @@
 # nineteenseventytwo-web
 
-The personal site at **mark.eightbitsaxlounge.com** — upcoming live music,
+The personal site at **sev.eightbitsaxlounge.com** — upcoming live music,
 an 80s/90s anime watch list, 8 Bit Sax Lounge, and other projects, in a
 deliberately 1996 visual register.
 
