@@ -1,0 +1,248 @@
+/*
+ * The 1996 design system (plan 09, W.2).
+ *
+ * Everything the era did with <font>, <marquee>, <blink>, bgcolor= and
+ * table layouts is here as CSS instead, because the CSP allows no inline
+ * styles or scripts (F10). Tiles are gradients, not images; the ticker and
+ * blink are CSS animations; layout is a single centred column that reflows
+ * to phone width - the period look without the fixed 800px table.
+ */
+
+:root {
+  --bg: #000040;
+  --tile-a: #000060;
+  --tile-b: #000030;
+  --panel: #c0c0c0;
+  --panel-text: #000000;
+  --link: #0000ee;
+  --link-visited: #551a8b;
+  --hot: #ff00ff;
+  --gold: #ffff00;
+  --hi: #ffffff;
+  --lo: #808080;
+  --shadow: #404040;
+
+  --body-font: 'Times New Roman', Times, serif;
+  --fun-font: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', cursive;
+  --mono-font: 'Courier New', Courier, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--panel-text);
+  font-family: var(--body-font);
+  line-height: 1.45;
+  background-color: var(--bg);
+  /* A starfield-ish tile, no image request. */
+  background-image:
+    radial-gradient(1px 1px at 10px 14px, var(--hi) 50%, transparent 51%),
+    radial-gradient(1px 1px at 34px 40px, var(--gold) 50%, transparent 51%),
+    radial-gradient(1px 1px at 52px 8px, var(--hi) 50%, transparent 51%),
+    linear-gradient(45deg, var(--tile-a) 25%, var(--tile-b) 25% 50%, var(--tile-a) 50% 75%, var(--tile-b) 75%);
+  background-size: 64px 64px, 64px 64px, 64px 64px, 24px 24px;
+}
+
+.page {
+  width: min(100% - 2rem, 46rem);
+  margin: 1rem auto 2rem;
+}
+
+/* ---- bevels: the whole look is these two ---- */
+
+.bevel-out,
+.panel,
+.nav a,
+.construction {
+  border: 3px solid;
+  border-color: var(--hi) var(--shadow) var(--shadow) var(--hi);
+}
+
+.bevel-in {
+  border: 3px solid;
+  border-color: var(--shadow) var(--hi) var(--hi) var(--shadow);
+}
+
+/* ---- masthead ---- */
+
+.masthead {
+  text-align: center;
+  color: var(--gold);
+  font-family: var(--fun-font);
+}
+
+.masthead__title {
+  margin: 0.5rem 0;
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-weight: bold;
+  color: var(--hot);
+  text-shadow: 3px 3px 0 var(--gold);
+}
+
+/* <marquee>, without <marquee>. */
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 0 1rem;
+  color: var(--gold);
+}
+
+.ticker span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: ticker 18s linear infinite;
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ---- nav: a row of chunky buttons ---- */
+
+.nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--panel);
+  color: var(--panel-text);
+  font-family: var(--fun-font);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav a:active,
+.nav a[aria-current='page'] {
+  border-color: var(--shadow) var(--hi) var(--hi) var(--shadow);
+  background: #d8d8d8;
+}
+
+.nav a:focus-visible,
+a:focus-visible {
+  outline: 2px dashed var(--hot);
+  outline-offset: 2px;
+}
+
+/* ---- the grey content panel ---- */
+
+.panel {
+  padding: 1rem 1.25rem;
+  background: var(--panel);
+}
+
+.panel h1,
+.panel h2,
+.panel h3 {
+  font-family: var(--fun-font);
+  color: #000080;
+  /* "nineteenseventytwo" is one long word in a big Comic Sans heading -
+     without this it pushes the panel past a phone's width. */
+  overflow-wrap: anywhere;
+}
+
+.panel {
+  overflow-wrap: break-word;
+}
+
+.panel h1 {
+  margin-top: 0;
+  font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+}
+
+a {
+  color: var(--link);
+}
+
+a:visited {
+  color: var(--link-visited);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+code,
+pre {
+  font-family: var(--mono-font);
+}
+
+/* ---- dividers and decorations ---- */
+
+.rainbow {
+  height: 6px;
+  margin: 1.5rem 0;
+  border: 0;
+  background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, magenta);
+}
+
+/* <blink>, without <blink>. Respects reduced motion like everything else. */
+.blink {
+  animation: blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  50% {
+    visibility: hidden;
+  }
+}
+
+.construction {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: var(--gold);
+  text-align: center;
+  font-family: var(--fun-font);
+}
+
+.construction__sign {
+  margin: 0 0 0.25rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  /* caution tape */
+  background: repeating-linear-gradient(-45deg, #000 0 10px, var(--gold) 10px 20px);
+  color: var(--hi);
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000;
+  padding: 0.25rem;
+}
+
+.footer {
+  color: var(--hi);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--gold);
+}
+
+/* Motion is decoration here, never information. */
+@media (prefers-reduced-motion: reduce) {
+  .ticker span,
+  .blink {
+    animation: none;
+  }
+
+  .ticker span {
+    padding-left: 0;
+  }
+}

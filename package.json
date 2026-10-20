@@ -1,0 +1,24 @@
+{
+  "name": "nineteenseventytwo-web",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "check:inline": "node scripts/check-no-inline.mjs dist",
+    "test": "astro check && astro build && node scripts/check-no-inline.mjs dist"
+  },
+  "dependencies": {
+    "astro": "7.3.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "typescript": "6.0.3"
+  }
+}

@@ -1,0 +1,32 @@
+name: ci
+
+# The required check on main. `build` runs the same `npm test` the deploy
+# does - type check, build, and the inline-content check - so a PR that
+# would break the CSP fails here, not in production.
+#
+# Hosted runners only: this repo is public, and a pull_request job on a
+# self-hosted runner runs a fork's code inside the lab (platform ADR-0010).
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm test

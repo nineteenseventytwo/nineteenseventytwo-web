@@ -1,0 +1,90 @@
+name: deploy
+
+# Build, sync to the site bucket, then clear both caches (platform ADR-0018).
+#
+# Credentials: the gha-site-deploy role, assumable only by a job in the
+# aws-prod environment of this repo (numeric-ID `sub`, nineteenseventytwo-
+# cloud live/aws/platform-prod/site.tf). It can write the site bucket and
+# invalidate the distribution, nothing else. No stored AWS key anywhere.
+#
+# Repository variables (Settings -> Secrets and variables -> Actions):
+#   AWS_ROLE_ARN                 the gha-site-deploy role
+#   SITE_BUCKET                  the site bucket
+#   CLOUDFRONT_DISTRIBUTION_ID   set once the distribution exists (W.1 step 3)
+#   CLOUDFLARE_ZONE_ID           set with the purge token below
+# Environment secret (aws-prod):
+#   CLOUDFLARE_PURGE_TOKEN       zone-scoped, Cache Purge permission only
+#
+# The invalidation and the purge are skipped while their variables are
+# unset, so the bucket can be filled before the distribution exists.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+# Never two deploys at once; never cancel one half-synced.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: aws-prod
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      SITE_BUCKET: ${{ vars.SITE_BUCKET }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      # The same gate as ci.yml's build: nothing is published that would
+      # fail the CSP.
+      - run: npm test
+
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: eu-west-2
+
+      # Two passes, because the two halves cache differently. Everything under
+      # _astro/ has a content hash in its name, so it is cached for a year and
+      # never changes; pages keep their names, so they must revalidate.
+      # Hashed assets go first: a page is never live before the files it
+      # references. Old hashed files are left in place (no --delete on that
+      # pass) so a page still cached somewhere keeps finding its stylesheet.
+      - name: Sync hashed assets
+        run: >-
+          aws s3 sync dist/_astro "s3://${SITE_BUCKET}/_astro"
+          --cache-control "public,max-age=31536000,immutable"
+      - name: Sync pages
+        run: >-
+          aws s3 sync dist "s3://${SITE_BUCKET}" --delete
+          --exclude "_astro/*"
+          --cache-control "public,max-age=0,must-revalidate"
+
+      # The same step clears both caches, so they cannot drift apart (W4).
+      - name: Invalidate CloudFront
+        if: vars.CLOUDFRONT_DISTRIBUTION_ID != ''
+        run: >-
+          aws cloudfront create-invalidation
+          --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}"
+          --paths "/*"
+      - name: Purge Cloudflare
+        if: vars.CLOUDFLARE_ZONE_ID != ''
+        env:
+          CLOUDFLARE_PURGE_TOKEN: ${{ secrets.CLOUDFLARE_PURGE_TOKEN }}
+          ZONE: ${{ vars.CLOUDFLARE_ZONE_ID }}
+        run: |
+          curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/${ZONE}/purge_cache" \
+            -H "Authorization: Bearer ${CLOUDFLARE_PURGE_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data '{"hosts":["sev.eightbitsaxlounge.com"]}'
