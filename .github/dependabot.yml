@@ -1,0 +1,16 @@
+# Grouped and monthly, matching the other repos: a single-maintainer repo,
+# and a PR queue nobody reads is the same as no updates at all. Security
+# updates arrive regardless of this schedule once enabled on the repo.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule: {interval: monthly}
+    groups:
+      npm: {patterns: ["*"]}
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule: {interval: monthly}
+    groups:
+      actions: {patterns: ["*"]}

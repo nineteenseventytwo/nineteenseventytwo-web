@@ -1,0 +1,63 @@
+---
+// Every page goes through here: one stylesheet, no inline anything.
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Live music, 80s and 90s anime, 8 Bit Sax Lounge, and other projects.' } = Astro.props;
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/events/', label: 'Gigs' },
+  { href: '/anime/', label: 'Anime' },
+  { href: '/8bsl/', label: '8 Bit Sax Lounge' },
+  { href: '/projects/', label: 'Projects' },
+];
+
+const here = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title === 'Home' ? 'sev' : `${title} - sev`}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="masthead">
+        <p class="masthead__title">sev's homepage</p>
+        <p class="ticker" aria-hidden="true"><span>~*~ welcome to my corner of the information superhighway ~*~</span></p>
+      </header>
+
+      <nav class="nav" aria-label="Main">
+        <ul>
+          {nav.map((item) => (
+            <li>
+              <a href={item.href} aria-current={here === item.href ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <main class="panel">
+        <slot />
+      </main>
+
+      <hr class="rainbow" />
+
+      <footer class="footer">
+        <p>Best viewed in any browser at any width. Made with a text editor and too much free time.</p>
+        <p><a href="https://github.com/nineteenseventytwo/nineteenseventytwo-web">view source</a></p>
+      </footer>
+    </div>
+  </body>
+</html>

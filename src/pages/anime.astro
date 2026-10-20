@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import UnderConstruction from '../components/UnderConstruction.astro';
+
+const all = (await getCollection('anime')).sort((a, b) => a.data.title.localeCompare(b.data.title));
+const watched = await Promise.all(
+  all.filter((a) => a.data.status === 'watched').map(async (entry) => ({ entry, Content: (await render(entry)).Content })),
+);
+const toWatch = all.filter((a) => a.data.status === 'to-watch');
+---
+
+<Base title="Anime" description="80s and 90s anime: watched, and to watch.">
+  <h1>Anime</h1>
+
+  {all.length === 0 && <UnderConstruction note="Entries arrive in W.3." />}
+
+  {watched.length > 0 && <h2>Watched</h2>}
+  {watched.map(({ entry, Content }) => (
+    <article class="entry">
+      <h3>{entry.data.title} ({entry.data.year})</h3>
+      {entry.data.screenshot && (
+        <figure>
+          <Image
+            src={entry.data.screenshot}
+            alt={entry.data.screenshotAlt ?? ''}
+            widths={[480, 800]}
+            sizes="(max-width: 46rem) 100vw, 46rem"
+          />
+          <figcaption>{entry.data.title} ({entry.data.year})</figcaption>
+        </figure>
+      )}
+      <Content />
+      {entry.data.quote && <blockquote>{entry.data.quote}</blockquote>}
+    </article>
+  ))}
+
+  {toWatch.length > 0 && <h2>To watch</h2>}
+  {toWatch.length > 0 && (
+    <ul>
+      {toWatch.map((entry) => (
+        <li>{entry.data.title} ({entry.data.year})</li>
+      ))}
+    </ul>
+  )}
+</Base>
