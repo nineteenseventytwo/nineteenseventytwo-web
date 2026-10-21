@@ -12,8 +12,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "check:inline": "node scripts/check-no-inline.mjs dist",
-    "test": "node --test events/test/ && astro check && astro build && node scripts/check-no-inline.mjs dist",
-    "test:events": "node --test events/test/",
+    "test": "node --test 'events/test/*.test.mjs' && astro check && astro build && node scripts/check-no-inline.mjs dist",
+    "test:events": "node --test 'events/test/*.test.mjs'",
     "events": "node events/src/run.mjs --out build/events.json"
   },
   "dependencies": {

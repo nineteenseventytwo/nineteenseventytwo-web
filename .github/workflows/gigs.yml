@@ -39,7 +39,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
-      - run: node --test events/test/
+      - run: npm run test:events
 
       # ETags and Last-Modified from last week, so unchanged listings cost the
       # venue a 304. Saved under a new key each run; restored from the latest.
