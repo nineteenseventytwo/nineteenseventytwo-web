@@ -8,6 +8,14 @@ updates:
     schedule: {interval: monthly}
     groups:
       npm: {patterns: ["*"]}
+    ignore:
+      # @astrojs/check (what `astro check` and CI's build run) has a peer range
+      # of typescript ^5 || ^6, so a TypeScript 7 bump fails `npm ci` with
+      # ERESOLVE before anything builds - and, grouped, it took the astro bump
+      # down with it (#3). Lift this once @astrojs/check's peer range includes 7:
+      #   npm view @astrojs/check peerDependencies
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: "/"
