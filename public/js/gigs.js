@@ -3,8 +3,9 @@
 // links are http(s) only - the data comes from scraped venue pages, so none
 // of it is ever treated as HTML. No inline styles (CSP): classes only.
 
+import { choosePicks } from './picks.js';
+
 const STALE_DAYS = 9; // weekly job, plus a little slack
-const TOP_PICKS = 12;
 
 const root = document.getElementById('gigs');
 const status = document.getElementById('gigs-status');
@@ -83,23 +84,18 @@ function render(data) {
     return;
   }
 
-  // Best first: favourites lead, then by how much matched, then soonest.
-  const picks = events
-    .filter((e) => e.score > 0)
-    .sort((a, b) => b.score - a.score || a.date.localeCompare(b.date));
+  const { picks, noteworthy } = choosePicks(events);
   if (picks.length) {
-    root.append(el('h3', null, `Picks (${picks.length})`));
+    root.append(el('h3', null, 'Picks'));
     const ul = el('ul', 'gigs');
-    for (const e of picks.slice(0, TOP_PICKS)) ul.append(gigItem(e, { detailed: true }));
+    for (const e of picks) ul.append(gigItem(e, { detailed: true }));
     root.append(ul);
-    if (picks.length > TOP_PICKS) {
-      const more = el('details', 'gigs__all');
-      more.append(el('summary', null, `More picks (${picks.length - TOP_PICKS})`));
-      const rest = el('ul', 'gigs');
-      for (const e of picks.slice(TOP_PICKS)) rest.append(gigItem(e, { detailed: false }));
-      more.append(rest);
-      root.append(more);
-    }
+  }
+  if (noteworthy.length) {
+    root.append(el('h3', null, `Noteworthy (${noteworthy.length})`));
+    const ul = el('ul', 'gigs');
+    for (const e of noteworthy) ul.append(gigItem(e, { detailed: false }));
+    root.append(ul);
   }
 
   const details = el('details', 'gigs__all');
