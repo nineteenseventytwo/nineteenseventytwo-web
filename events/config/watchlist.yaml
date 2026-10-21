@@ -1,0 +1,40 @@
+# What makes a gig worth surfacing. Edit by PR; the next weekly run uses it.
+# Scoring rules: events/src/score.mjs.
+
+# Favourite artists. Matched against each act in a lineup.
+# `exact: true` for names that are ordinary words ("Nothing", "Hum") - those
+# only match a whole lineup entry, never a word inside a title, or every
+# "Nothing But Thieves" and "Hum and Strum" would count.
+artists:
+  - name: Hum
+    exact: true
+  - Cole Pulice
+  - Anamanaguchi
+  - name: Nothing
+    exact: true
+  - The Darkness
+  - Seapony
+  - Broken Social Scene
+  - Timecop1983
+  - FM-84
+  - Rancid
+  - Igorrr
+  # Parody and tribute acts are artists too.
+  - Tragedy
+  - Nick Cage Against the Machine
+
+# Genre and sound keywords, matched as whole words in an event's title and
+# description. Each matched group adds its weight once.
+genres:
+  shoegaze: { weight: 3, words: [shoegaze, shoe-gaze, shoegazer] }
+  dream pop: { weight: 3, words: [dream pop, dream-pop, dreampop] }
+  metal: { weight: 2, words: [metal, doom, sludge, black metal, death metal, thrash, metalcore, mathcore] }
+  hardcore & punk: { weight: 2, words: [hardcore, punk, post-punk, post punk, skate punk, d-beat, emo] }
+  saxophone: { weight: 3, words: [sax, saxophone, saxophonist, tenor sax, alto sax, baritone sax] }
+  chiptune: { weight: 3, words: [chiptune, chip tune, 8-bit, 8bit, gameboy, nes] }
+  synth & vaporwave: { weight: 2, words: [synthwave, synth-wave, darksynth, retrowave, outrun, vaporwave, vapourwave, synthpop, synth pop, coldwave] }
+  # Not "tribute": that word is mostly jazz tribute concerts (Vortex), not
+  # the Tragedy / Nick Cage Against the Machine kind of act.
+  parody: { weight: 2, words: [parody, parodies, spoof, comedy metal, comedy rock, novelty band] }
+  open mic: { weight: 1, words: [open mic, open-mic, open stage, jam night] }
+

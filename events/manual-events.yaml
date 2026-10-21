@@ -1,0 +1,49 @@
+# Gigs added by hand: venues without a readable listing (Shacklewell, MOTH,
+# SJQ, Blondies if its DICE page stops working), open mics, things seen on
+# Instagram. Same scoring and the same page as the scraped ones; past dates
+# drop off automatically.
+#
+# One-off gigs:
+#   - title: Seapony + support
+#     date: 2026-11-14          # YYYY-MM-DD
+#     time: "19:30"             # optional, 24h, London time
+#     venue: Shacklewell Arms
+#     url: https://...          # optional - tickets or info
+#     note: Seen on their Instagram   # optional, shown on the page
+
+events:
+  # ---- Shacklewell Arms, October 2026 calendar (their Instagram) ----------
+  # Transcribed from the monthly poster; promoter and "free entry" in the
+  # note. (CLUB) nights are the late slot after the gig.
+  - { title: 7EBRA + Louis Grace, date: 2026-10-21, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations" }
+  - { title: Uche Yara, date: 2026-10-22, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "FORM" }
+  - { title: "Drum Tower + Gloop Unit + Dogs Of…", date: 2026-10-23, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Infinity Farm. Third act's name is cut off on the poster." }
+  - { title: "Sweet Dreams Soul & Disco (club night)", date: 2026-10-23, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Free entry" }
+  - { title: "October All-Dayer: 1000 Legs", date: 2026-10-24, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: "Scared To Dance: special guests TBA (club night)", date: 2026-10-24, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
+  - { title: The Jump Cuts + special guests, date: 2026-10-25, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: Divebar Youth + special guests, date: 2026-10-26, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: Nina Winder-Lind & Heka, date: 2026-10-27, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bird on the Wire" }
+  - { title: Cheerless + Mannequin Flowers, date: 2026-10-28, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: Painting + The Fruit Band + Degurutieni, date: 2026-10-29, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: Flowers For The Dead + What Jen Wants, date: 2026-10-30, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: "Scared To Dance: guest DJ Molly Payton (club night)", date: 2026-10-30, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
+  - { title: Tom Rowley + TBC, date: 2026-10-31, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "SJM" }
+  - { title: "A Love Letter To: Boy Harsher (club night)", date: 2026-10-31, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
+
+# Regular nights - open mics, residencies. The job turns each into dates
+# within its window. Either weekly (`day` only) or monthly (`day` + `nth`:
+# 1-4 for first..fourth, -1 for the last one in the month).
+#
+#   - title: Noteworthy Open Mic
+#     venue: Paper Dress Vintage
+#     day: sunday
+#     time: "18:00"
+#     note: Sign-up from 6pm, first come first served
+#   - title: Open mic
+#     venue: The Three Compasses
+#     day: monday
+#     nth: 2                    # second Monday of each month
+#
+# Check a night still runs before adding it - open mic listings go stale.
+recurring: []

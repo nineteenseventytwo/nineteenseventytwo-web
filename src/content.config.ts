@@ -44,4 +44,21 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { anime, projects };
+// Gigs I've been to. One Markdown file per show; the body is a few words
+// about it. A photo is optional, but like the anime screenshots it needs alt
+// text.
+const gigs = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/gigs' }),
+  schema: ({ image }) =>
+    z
+      .object({
+        title: z.string(),
+        date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD'),
+        venue: z.string(),
+        photo: image().optional(),
+        photoAlt: z.string().optional(),
+      })
+      .refine((g) => !g.photo || g.photoAlt, { message: 'a photo needs photoAlt' }),
+});
+
+export const collections = { anime, projects, gigs };

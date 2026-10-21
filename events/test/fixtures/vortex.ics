@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART;TZID=UTC+0:20261021T184500
+SUMMARY:Alex Bonney\, Tim Giles\, Alcyona Mick
+DESCRIPTION:An improvised set. This is a long line that was
+  folded by the feed.
+URL:https://www.vortexjazz.co.uk/event/alex-bonney/
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20261022T190000Z
+SUMMARY:Late Set
+END:VEVENT
+END:VCALENDAR

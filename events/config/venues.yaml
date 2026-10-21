@@ -1,0 +1,48 @@
+# Where the gig list reads from (plan 09, W.4). One entry per source.
+#
+# adapter: how the page is read - see events/src/adapters/. Prefer a real feed
+# (ical, jsonld, microdata) over page parsing; parsing is per-venue and
+# breaks when the venue redesigns, which the job reports rather than hides.
+#
+# Not here, and why (2026-10 survey):
+#   Shacklewell Arms, MOTH  listings exist only as DICE's embeddable widget,
+#                           driven by an API key issued to the venue. Their
+#                           dice.fm venue pages would work with the
+#                           dice-venue adapter - add them below if Blondies'
+#                           does. Until then: manual-events.yaml.
+#   SJQ                     programme is an Elfsight widget, same problem.
+#   anything else           manual-events.yaml
+venues:
+  - id: oslo
+    name: Oslo
+    url: https://www.alttickets.com/venue/london/oslo
+    adapter: jsonld
+
+  - id: vortex
+    name: Vortex Jazz Club
+    url: https://www.vortexjazz.co.uk/events/?ical=1
+    link: https://www.vortexjazz.co.uk/
+    adapter: ical
+
+  - id: earth
+    name: EartH
+    url: https://earthackney.co.uk/events/
+    adapter: microdata
+
+  - id: cafe-oto
+    name: Cafe OTO
+    url: https://www.cafeoto.co.uk/events/
+    adapter: oto
+    # The listing is paginated, about 3 weeks a page; 3 pages covers the
+    # window. Each extra page is one more request at OTO's 10s crawl delay.
+    pages: 3
+
+  - id: paper-dress
+    name: Paper Dress Vintage
+    url: https://paperdressvintage.co.uk/by-night
+    adapter: paperdress
+
+  - id: blondies
+    name: Blondies
+    url: https://dice.fm/venue/blondies-rmvw
+    adapter: dice-venue

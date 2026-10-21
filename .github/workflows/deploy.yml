@@ -65,10 +65,14 @@ jobs:
         run: >-
           aws s3 sync dist/_astro "s3://${SITE_BUCKET}/_astro"
           --cache-control "public,max-age=31536000,immutable"
+      # events.json is not part of the build - the weekly gigs workflow
+      # writes it straight to the bucket. Excluded here, or every site deploy
+      # would --delete it and empty the Gigs page until the next Monday.
       - name: Sync pages
         run: >-
           aws s3 sync dist "s3://${SITE_BUCKET}" --delete
           --exclude "_astro/*"
+          --exclude "events.json"
           --cache-control "public,max-age=0,must-revalidate"
 
       # The same step clears both caches, so they cannot drift apart (W4).
