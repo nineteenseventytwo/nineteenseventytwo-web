@@ -1,0 +1,12 @@
+# Gigs added by hand: venues without a readable listing (Shacklewell, MOTH,
+# SJQ, Blondies if its DICE page stops working), open mics, things seen on
+# Instagram. Same scoring and the same page as the scraped ones; past dates
+# drop off automatically.
+#
+#   - title: Seapony + support
+#     date: 2026-11-14          # YYYY-MM-DD
+#     time: "19:30"             # optional, 24h, London time
+#     venue: Shacklewell Arms
+#     url: https://...          # optional - tickets or info
+#     note: Seen on their Instagram   # optional, shown on the page
+events: []

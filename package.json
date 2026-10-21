@@ -12,10 +12,14 @@
     "preview": "astro preview",
     "check": "astro check",
     "check:inline": "node scripts/check-no-inline.mjs dist",
-    "test": "astro check && astro build && node scripts/check-no-inline.mjs dist"
+    "test": "node --test events/test/ && astro check && astro build && node scripts/check-no-inline.mjs dist",
+    "test:events": "node --test events/test/",
+    "events": "node events/src/run.mjs --out build/events.json"
   },
   "dependencies": {
-    "astro": "7.3.8"
+    "astro": "7.3.8",
+    "cheerio": "1.2.0",
+    "yaml": "2.9.1"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",

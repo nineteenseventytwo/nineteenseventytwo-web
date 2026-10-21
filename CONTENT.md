@@ -76,12 +76,53 @@ As much Markdown as the project deserves: paragraphs, lists, headings
 Current `order`: platform is `30`. Leave gaps (10, 20, 30) so a new project can
 slot in between without renumbering.
 
+## Gigs - `events/` and `src/content/gigs/`
+
+**Upcoming gigs** come from the weekly `gigs` workflow (Mondays 06:00 UTC, or
+run it by hand from the Actions tab). Three files steer it:
+
+- `events/config/watchlist.yaml` - favourite artists and genre keywords. A
+  favourite scores 10; a genre adds its weight if it is in the title or
+  lineup, half that if only in the description. Ordinary-word artist names
+  (`Nothing`, `Hum`) need `exact: true`.
+- `events/config/venues.yaml` - which venues are read, and how.
+- `events/manual-events.yaml` - gigs to add by hand (Shacklewell, MOTH, SJQ,
+  open mics, anything off Instagram):
+
+```yaml
+events:
+  - title: Seapony + support
+    date: 2026-11-14
+    time: "19:30"            # optional
+    venue: Shacklewell Arms
+    url: https://...          # optional
+    note: Seen on Instagram   # optional
+```
+
+Changes to these files take effect on the next run - merge, then run the
+`gigs` workflow by hand if you do not want to wait for Monday.
+
+**Gigs you went to** are a content collection, like anime - one file each in
+`src/content/gigs/`, newest first under "Been there":
+
+```markdown
+---
+title: Hikikomori + Inner City Holdings
+date: 2026-10-22
+venue: Blondies
+photo: ./2026-10-22-hikikomori.jpg    # optional, next to this file
+photoAlt: The band on Blondies' stage under red light   # required with a photo
+---
+
+A line or two about the night.
+```
+
 ## The other pages - `src/pages/`
 
 `index.astro` (home) and `8bsl.astro` are plain pages: edit the HTML between
 `<Base ...>` and `</Base>` directly. The `<UnderConstruction ... />` line is the
 placeholder - delete it when the real content goes in. `events.astro` is the
-gig list; leave it, it is about to be generated (W.4).
+Gigs page; its content comes from the files above.
 
 ## Rules the build enforces
 

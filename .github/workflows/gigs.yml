@@ -1,0 +1,83 @@
+name: gigs
+
+# The weekly gig refresh (plan 09, W.4): read the venues, score against the
+# watchlist, publish /events.json to the site bucket. The Gigs page fetches
+# that file, so the list updates without a site rebuild.
+#
+# Weekly (Monday morning) because listings change weekly at most, and every
+# run is a request to each venue's site (events/src/http.mjs: robots.txt,
+# crawl-delay, conditional requests). workflow_dispatch to run it by hand -
+# e.g. after editing venues.yaml, watchlist.yaml or manual-events.yaml.
+#
+# Same credentials and environment as deploy.yml: gha-site-deploy can write
+# the bucket and invalidate the distribution, nothing else.
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gigs
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    environment: aws-prod
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      SITE_BUCKET: ${{ vars.SITE_BUCKET }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: node --test events/test/
+
+      # ETags and Last-Modified from last week, so unchanged listings cost the
+      # venue a 304. Saved under a new key each run; restored from the latest.
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: events/.cache
+          key: gigs-http-${{ github.run_id }}
+          restore-keys: gigs-http-
+
+      - name: Read the venues
+        run: node events/src/run.mjs --out build/events.json --cache events/.cache/http.json
+
+      - name: Summary
+        if: always()
+        run: |
+          [ -f build/events.json ] || exit 0
+          node -e '
+            const d = require("./build/events.json");
+            const rows = d.sources.map(s => `| ${s.name} | ${s.ok ? "ok" : "FAILED"} | ${s.count} | ${s.error ?? (s.cached ? "unchanged (304)" : "")} |`);
+            const picks = d.events.filter(e => e.score > 0).length;
+            console.log(["## Gigs", "", `${d.events.length} events, ${picks} picks`, "", "| Venue | | Upcoming | |", "|---|---|---|---|", ...rows].join("\n"));
+          ' >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: eu-west-2
+
+      # Five minutes at the edge: fresh soon after a run, and the page never
+      # waits on S3 for a file that changes once a week.
+      - name: Publish
+        run: >-
+          aws s3 cp build/events.json "s3://${SITE_BUCKET}/events.json"
+          --content-type application/json
+          --cache-control "public,max-age=300"
+      - name: Invalidate
+        if: vars.CLOUDFRONT_DISTRIBUTION_ID != ''
+        run: >-
+          aws cloudfront create-invalidation
+          --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}"
+          --paths "/events.json"

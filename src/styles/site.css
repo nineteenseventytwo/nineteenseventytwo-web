@@ -235,6 +235,103 @@ pre {
   content: '\201D';
 }
 
+/* ---- gigs ---- */
+
+.gigs__status {
+  font-style: italic;
+}
+
+.gigs__status--stale,
+.gigs__note {
+  padding: 0.25rem 0.5rem;
+  background: var(--gold);
+  font-style: normal;
+}
+
+.gigs {
+  margin: 0.5rem 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.gig {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 0 0.75rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px dotted var(--lo);
+}
+
+.gig > :not(.gig__when) {
+  grid-column: 2;
+}
+
+.gig__when {
+  grid-row: span 4;
+  font-family: var(--mono-font);
+  font-size: 0.9rem;
+}
+
+.gig__title {
+  font-weight: bold;
+}
+
+.gig__venue,
+.gig__meta {
+  font-size: 0.9rem;
+  color: #303030;
+}
+
+.gig__desc {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+}
+
+.gig--pick .gig__title a {
+  color: #800080;
+}
+
+.gig__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.2rem;
+}
+
+.chip {
+  padding: 0 0.4rem;
+  font-family: var(--fun-font);
+  font-size: 0.75rem;
+  background: #000080;
+  color: var(--hi);
+}
+
+.chip--fav {
+  background: var(--hot);
+}
+
+.gigs__all summary {
+  cursor: pointer;
+  font-family: var(--fun-font);
+  font-weight: bold;
+  color: #000080;
+}
+
+/* Phones: the date goes above the title rather than beside it. */
+@media (max-width: 30rem) {
+  .gig {
+    grid-template-columns: 1fr;
+  }
+
+  .gig > :not(.gig__when) {
+    grid-column: 1;
+  }
+
+  .gig__when {
+    grid-row: auto;
+  }
+}
+
 /* ---- dividers and decorations ---- */
 
 .rainbow {
