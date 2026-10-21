@@ -81,3 +81,31 @@ export function parseDayMonth(text, today = londonToday()) {
   const year = m[3] ? Number(m[3]) : inferYear(month, day, today);
   return ymd(year, month, day);
 }
+
+const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
+/**
+ * Dates of a regular night between `from` and `to` (inclusive, YYYY-MM-DD).
+ * Weekly when `nth` is absent; otherwise the nth such weekday of each month
+ * (1-4, or -1 for the last).
+ */
+export function recurringDates({ day, nth = null }, from, to) {
+  const dow = DAYS.indexOf(String(day).toLowerCase());
+  if (dow < 0) throw new Error(`unknown day "${day}"`);
+  if (nth !== null && ![1, 2, 3, 4, -1].includes(Number(nth))) throw new Error(`nth must be 1-4 or -1, not ${nth}`);
+  const out = [];
+  for (let d = from; d <= to; d = shiftDays(d, 1)) {
+    const [y, m, dd] = d.split('-').map(Number);
+    const t = new Date(Date.UTC(y, m - 1, dd));
+    if (t.getUTCDay() !== dow) continue;
+    if (nth === null) {
+      out.push(d);
+      continue;
+    }
+    const n = Number(nth);
+    const ordinal = Math.ceil(dd / 7);
+    const isLast = shiftDays(d, 7).slice(0, 7) !== d.slice(0, 7);
+    if ((n > 0 && ordinal === n) || (n === -1 && isLast)) out.push(d);
+  }
+  return out;
+}

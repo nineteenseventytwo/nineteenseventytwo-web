@@ -16,7 +16,7 @@ import { parse as parseYaml } from 'yaml';
 import { adapters } from './adapters/index.mjs';
 import { politeGet, loadCache, saveCache } from './http.mjs';
 import { RulesScorer } from './score.mjs';
-import { londonToday, shiftDays } from './dates.mjs';
+import { londonToday, shiftDays, recurringDates } from './dates.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const WINDOW_DAYS = 90;
@@ -45,7 +45,9 @@ async function main() {
 
   const { venues } = await loadYaml('config/venues.yaml');
   const watchlist = await loadYaml('config/watchlist.yaml');
-  const manual = (await loadYaml('manual-events.yaml'))?.events ?? [];
+  const manualFile = (await loadYaml('manual-events.yaml')) ?? {};
+  const manual = manualFile.events ?? [];
+  const recurring = manualFile.recurring ?? [];
   const scorer = new RulesScorer(watchlist);
   const today = londonToday();
   const until = shiftDays(today, WINDOW_DAYS);
@@ -97,6 +99,33 @@ async function main() {
       venueId: 'manual',
       source: 'manual',
     });
+  }
+
+  for (const r of recurring) {
+    if (!r.title || !r.day) {
+      console.error(`recurring entry skipped (needs title and day): ${JSON.stringify(r)}`);
+      continue;
+    }
+    let dates;
+    try {
+      dates = recurringDates(r, today, until);
+    } catch (e) {
+      console.error(`recurring entry skipped (${e.message}): ${r.title}`);
+      continue;
+    }
+    for (const date of dates) {
+      events.push({
+        title: String(r.title),
+        date,
+        time: r.time ? String(r.time) : null,
+        url: r.url ?? null,
+        description: r.note ?? '',
+        lineup: [String(r.title)],
+        venue: r.venue ?? '',
+        venueId: 'recurring',
+        source: 'recurring',
+      });
+    }
   }
 
   const scored = events

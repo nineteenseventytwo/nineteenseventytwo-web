@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { inferYear, parseDayMonth, parseTime, toLondon, shiftDays } from '../src/dates.mjs';
+import { inferYear, parseDayMonth, parseTime, toLondon, shiftDays, recurringDates } from '../src/dates.mjs';
 
 test('inferYear: upcoming dates this year, a passed-by-a-month date is next year', () => {
   assert.equal(inferYear(10, 22, '2026-10-21'), 2026);
@@ -31,4 +31,12 @@ test('toLondon applies BST and GMT', () => {
 
 test('shiftDays crosses months', () => {
   assert.equal(shiftDays('2026-10-30', 3), '2026-11-02');
+});
+
+test('recurringDates: weekly, nth weekday, last weekday', () => {
+  assert.deepEqual(recurringDates({ day: 'sunday' }, '2026-10-21', '2026-11-08'), ['2026-10-25', '2026-11-01', '2026-11-08']);
+  assert.deepEqual(recurringDates({ day: 'Monday', nth: 2 }, '2026-10-01', '2026-12-31'), ['2026-10-12', '2026-11-09', '2026-12-14']);
+  assert.deepEqual(recurringDates({ day: 'friday', nth: -1 }, '2026-10-01', '2026-11-30'), ['2026-10-30', '2026-11-27']);
+  assert.throws(() => recurringDates({ day: 'funday' }, '2026-10-01', '2026-10-31'));
+  assert.throws(() => recurringDates({ day: 'monday', nth: 5 }, '2026-10-01', '2026-10-31'));
 });
