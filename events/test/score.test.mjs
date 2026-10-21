@@ -36,3 +36,21 @@ test('a genre in the title outranks the same genre buried in the description', (
   const buried = s('Rob Luft Quartet', { description: 'Line-up: Rob Luft - guitar, Joe Wright - tenor sax' });
   assert.ok(titled.score > buried.score);
 });
+
+test('format: DJ, club and rave nights vs bands - phrases, not traps', () => {
+  const f = new RulesScorer({
+    djNight: { words: ['club night', '(club)', 'dj', 'djs', 'dj set', 'b2b', 'rave', 'disco night'] },
+  });
+  const fmt = (title, description = '') => f.score({ title, description, lineup: [title] }).format;
+  assert.equal(fmt('Some Weird Sin Club Night'), 'dj');
+  assert.equal(fmt('Mannequin 03 (CLUB)'), 'dj');
+  assert.equal(fmt('Scared To Dance: guest DJ Molly Payton'), 'dj');
+  assert.equal(fmt('Nico&Linus + Flashback DJs'), 'dj');
+  assert.equal(fmt('Halloween Rave'), 'dj');
+  assert.equal(fmt('X b2b Y'), 'dj');
+  // bands - including the traps
+  assert.equal(fmt('The Sewing Club + Crysometimes'), 'band');
+  assert.equal(fmt('Dance Yrself Clean'), 'band');
+  assert.equal(fmt('Djinn + Raveonettes tribute'), 'band'); // "dj"/"rave" inside words
+  assert.equal(fmt('Angel Du$t and Homefront', 'Hardcore rockers from Baltimore'), 'band');
+});

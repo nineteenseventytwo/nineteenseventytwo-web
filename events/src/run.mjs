@@ -130,7 +130,7 @@ async function main() {
 
   const scored = events
     .map((e) => {
-      const { score, reasons } = scorer.score(e);
+      const { score, reasons, format } = scorer.score(e);
       return {
         id: id(e.venueId, e.date, e.title),
         title: e.title,
@@ -141,6 +141,7 @@ async function main() {
         description: trim(e.description),
         score,
         reasons,
+        format,
         source: e.source,
       };
     })

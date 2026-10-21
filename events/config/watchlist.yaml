@@ -38,3 +38,10 @@ genres:
   parody: { weight: 2, words: [parody, parodies, spoof, comedy metal, comedy rock, novelty band] }
   open mic: { weight: 1, words: [open mic, open-mic, open stage, jam night] }
 
+# DJ, club and rave nights can still score (a goth club night is worth
+# knowing about) but never make Picks - those are bands. Phrases, not single
+# words: "club" alone is in venue names (MOTH Club, Vortex Jazz Club) and
+# band names (The Sewing Club), and "dance" is in band names too.
+djNight:
+  words: [club night, clubnight, (club), dj, djs, dj set, dj sets, b2b, rave, all-nighter, allnighter, all nighter, soundsystem, sound system, selector, selectors, disco night, dance party, silent disco]
+
