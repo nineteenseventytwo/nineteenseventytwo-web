@@ -186,6 +186,55 @@ pre {
   font-family: var(--mono-font);
 }
 
+/* ---- content entries (anime, projects) ---- */
+
+.entry {
+  padding-bottom: 1rem;
+  border-bottom: 2px dashed var(--lo);
+}
+
+.entry:last-of-type {
+  border-bottom: 0;
+}
+
+/* Browsers indent <figure> and <blockquote> 40px by default, which halves a
+   screenshot on a phone. */
+.entry figure {
+  margin: 0.5rem 0;
+}
+
+.entry figure img {
+  display: block;
+  width: 100%;
+  border: 3px solid;
+  border-color: var(--shadow) var(--hi) var(--hi) var(--shadow);
+}
+
+.entry figcaption {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #303030;
+}
+
+.quote {
+  margin: 0.75rem 0;
+  padding: 0.5rem 0.75rem;
+  background: #000;
+  color: var(--gold);
+  font-family: var(--fun-font);
+  border: 3px solid;
+  border-color: var(--shadow) var(--hi) var(--hi) var(--shadow);
+}
+
+.quote::before {
+  content: '\201C';
+}
+
+.quote::after {
+  content: '\201D';
+}
+
 /* ---- dividers and decorations ---- */
 
 .rainbow {
