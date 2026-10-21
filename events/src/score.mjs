@@ -2,8 +2,11 @@
 // scorer can replace RulesScorer later without touching fetch or publish.
 //
 //   interface Scorer {
-//     score(event): { score: number, reasons: string[] }
+//     score(event): { score: number, reasons: string[], format: 'band' | 'dj' }
 //   }
+//
+// `format` is separate from the score: a DJ night can match a genre (and so
+// be worth listing) without being a band gig. The page only ever picks bands.
 
 export function normalize(s) {
   return String(s ?? '')
@@ -26,6 +29,11 @@ export class RulesScorer {
       const name = typeof a === 'string' ? a : a.name;
       return { name, exact: typeof a === 'object' && a.exact === true, norm: normalize(name), re: wordRe(name) };
     });
+    // Not wordRe: these phrases include punctuation ("(club)"), so they are
+    // matched against the lowercased text with non-word boundaries instead.
+    this.djWords = (watchlist.djNight?.words ?? []).map(
+      (w) => new RegExp(`(^|[^a-z0-9])${escape(String(w).toLowerCase())}($|[^a-z0-9])`),
+    );
     this.genres = Object.entries(watchlist.genres ?? {}).map(([label, g]) => ({
       label,
       weight: g.weight ?? 1,
@@ -67,6 +75,12 @@ export class RulesScorer {
       }
     }
 
-    return { score, reasons };
+    return { score, reasons, format: this.format(event) };
+  }
+
+  /** 'dj' for DJ / club / rave nights, from the title and description. */
+  format(event) {
+    const text = `${event.title ?? ''} ${event.description ?? ''}`.toLowerCase();
+    return this.djWords.some((re) => re.test(text)) ? 'dj' : 'band';
   }
 }

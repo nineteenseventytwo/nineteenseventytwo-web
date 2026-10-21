@@ -34,3 +34,15 @@ test('favourites lead and sit outside the per-venue cap', () => {
   assert.deepEqual(picks.map((e) => e.date), ['2026-11-01', '2026-11-02', '2026-10-21', '2026-10-22']);
   assert.deepEqual(noteworthy.map((e) => e.date), ['2026-10-23']);
 });
+
+test('DJ nights never make Picks, however well they score - they go to Noteworthy', () => {
+  const events = [
+    { ...ev('Shacklewell', 10, '2026-10-31', ['favourite: Boy Harsher']), format: 'dj' },
+    { ...ev('Paper Dress', 3, '2026-11-13', ['hardcore & punk']), format: 'dj' },
+    { ...ev('EartH', 2, '2026-11-13', ['hardcore & punk']), format: 'band' },
+    ev('Oslo', 1, '2026-11-01'), // no format (older events.json): a band
+  ];
+  const { picks, noteworthy } = choosePicks(events);
+  assert.deepEqual(picks.map((e) => e.venue), ['EartH', 'Oslo']);
+  assert.deepEqual(noteworthy.map((e) => e.venue), ['Shacklewell', 'Paper Dress']);
+});

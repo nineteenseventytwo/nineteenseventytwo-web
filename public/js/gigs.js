@@ -52,7 +52,7 @@ function gigItem(e, { detailed }) {
   }
   li.append(title);
 
-  if (e.venue) li.append(el('span', 'gig__venue', e.venue));
+  if (e.venue) li.append(el('span', 'gig__venue', e.venue + (e.format === 'dj' ? ' · DJ night' : '')));
 
   if (e.reasons?.length) {
     const chips = el('span', 'gig__chips');
