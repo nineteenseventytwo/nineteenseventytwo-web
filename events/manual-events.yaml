@@ -29,7 +29,7 @@ events:
   - { title: Flowers For The Dead + What Jen Wants, date: 2026-10-30, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
   - { title: "Scared To Dance: guest DJ Molly Payton (club night)", date: 2026-10-30, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
   - { title: Tom Rowley + TBC, date: 2026-10-31, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "SJM" }
-  - { title: "A Love Letter To: Boy Harsher (club night)", date: 2026-10-31, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
+  - { title: "A Love Letter To: Boy Harsher (club night)", date: 2026-10-31, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "A Boy Harsher club night - darkwave" }
 
 # Regular nights - open mics, residencies. The job turns each into dates
 # within its window. Either weekly (`day` only) or monthly (`day` + `nth`:
