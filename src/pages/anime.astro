@@ -31,8 +31,8 @@ const toWatch = all.filter((a) => a.data.status === 'to-watch');
           <figcaption>{entry.data.title} ({entry.data.year})</figcaption>
         </figure>
       )}
+      {entry.data.quote && <blockquote class="quote">{entry.data.quote}</blockquote>}
       <Content />
-      {entry.data.quote && <blockquote>{entry.data.quote}</blockquote>}
     </article>
   ))}
 
