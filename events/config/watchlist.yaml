@@ -28,6 +28,7 @@ artists:
 genres:
   shoegaze: { weight: 3, words: [shoegaze, shoe-gaze, shoegazer] }
   dream pop: { weight: 3, words: [dream pop, dream-pop, dreampop] }
+  goth: { weight: 3, words: [goth, gothic, goth rock, gothic rock, deathrock, death rock, darkwave, dark wave, batcave] }
   metal: { weight: 2, words: [metal, doom, sludge, black metal, death metal, thrash, metalcore, mathcore] }
   hardcore & punk: { weight: 2, words: [hardcore, punk, post-punk, post punk, skate punk, d-beat, emo] }
   saxophone: { weight: 3, words: [sax, saxophone, saxophonist, tenor sax, alto sax, baritone sax] }
