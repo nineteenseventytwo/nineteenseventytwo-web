@@ -39,8 +39,8 @@ const projects = defineCollection({
     summary: z.string(),
     // Lower first. Ties sort by title.
     order: z.number().int(),
-    url: z.string().url().optional(),
-    repo: z.string().url().optional(),
+    url: z.url().optional(),
+    repo: z.url().optional(),
   }),
 });
 
