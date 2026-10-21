@@ -7,4 +7,4 @@ screenshot: ./redline.jpg
 screenshotAlt: "How's my hair?"
 ---
 
-Not quite 80/90's but worth making the list. An intergalactic race with an insane number of drawn frames, it's like a hypnotic dream all the way through as our rockabilly protagonist race's their way to glory.
+Not quite 80/90's but worth making the list. An intergalactic race with an insane number of drawn frames, it's like a hypnotic dream all the way through as our rockabilly protagonist races their way to glory.
