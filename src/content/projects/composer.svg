@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 822" width="480" height="822" role="img" aria-labelledby="t d"><title id="t">How the composer arranges a score</title><desc id="d">A piano score from a game soundtrack goes in as MusicXML. The composer service in the cluster splits it into melody, bass and harmony, decodes each bar's chord from the score itself, then arranges it as bossa nova - by rule, or with a language model on the PC's GPU choosing density, bass feel and substitutions. Out come five staves: four for Game Boy channels in LSDj and one for the alto sax, played live.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#000"/></marker></defs><rect x="1" y="1" width="478" height="820" fill="#c0c0c0"/>
+<path d="M1 821 V1 H479" fill="none" stroke="#ffffff" stroke-width="2"/>
+<path d="M1 821 H479 V1" fill="none" stroke="#404040" stroke-width="2"/>
+<rect x="5" y="5" width="470" height="24" fill="#000080"/>
+<text x="12" y="22" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="start">C:\COMPOSER\ARRANGE.SVG</text>
+<rect x="410" y="8" width="18" height="17" fill="#c0c0c0"/>
+<path d="M410 25 V8 H428" fill="none" stroke="#ffffff" stroke-width="2"/>
+<path d="M410 25 H428 V8" fill="none" stroke="#404040" stroke-width="2"/>
+<text x="419" y="21" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">_</text>
+<rect x="432" y="8" width="18" height="17" fill="#c0c0c0"/>
+<path d="M432 25 V8 H450" fill="none" stroke="#ffffff" stroke-width="2"/>
+<path d="M432 25 H450 V8" fill="none" stroke="#404040" stroke-width="2"/>
+<text x="441" y="21" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">□</text>
+<rect x="450" y="8" width="18" height="17" fill="#c0c0c0"/>
+<path d="M450 25 V8 H468" fill="none" stroke="#ffffff" stroke-width="2"/>
+<path d="M450 25 H468 V8" fill="none" stroke="#404040" stroke-width="2"/>
+<text x="459" y="21" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">×</text>
+<rect x="14" y="44" width="452" height="50" fill="#ffffcc" stroke="#000"/>
+<text x="21" y="61" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Piano score in</text>
+<text x="21" y="77" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Game music transcriptions, as MusicXML</text>
+<path d="M360 94 L360 146" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+<text x="368" y="116" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start" font-style="italic">POST /arrange</text>
+<rect x="15" y="129" width="452" height="364" fill="none" stroke="#ffffff"/>
+<rect x="14" y="128" width="452" height="364" fill="none" stroke="#808080"/>
+<rect x="22" y="120" width="293.8" height="16" fill="#c0c0c0"/>
+<text x="27" y="133" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">composer · Python, in the cluster</text>
+<rect x="26" y="146" width="428" height="48" fill="#ffffff" stroke="#000"/>
+<text x="33" y="163" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Split the voices</text>
+<text x="33" y="179" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">What's melody, what's bass, what's harmony</text>
+<path d="M240 194 L240 214" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="26" y="214" width="428" height="62" fill="#ffffff" stroke="#000"/>
+<text x="33" y="231" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Find the chords</text>
+<text x="33" y="247" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Viterbi over the key's diatonic sevenths,</text>
+<text x="33" y="262" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">led by the bass: derived, never invented</text>
+<path d="M240 276 L240 296" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="26" y="296" width="428" height="96" fill="#ffffcc" stroke="#000"/>
+<text x="33" y="313" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Arrange as bossa nova</text>
+<text x="33" y="329" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">deterministic: all rules, no model</text>
+<text x="33" y="344" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">plan: a model picks density, bass feel and</text>
+<text x="33" y="359" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">  chord substitutions from the options</text>
+<text x="33" y="374" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">notes: model rewrites notes (kept to compare)</text>
+<path d="M240 392 L240 412" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="26" y="412" width="428" height="62" fill="#ffffff" stroke="#000"/>
+<text x="33" y="429" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Render</text>
+<text x="33" y="445" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Five staves, one per performer,</text>
+<text x="33" y="460" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">back out as MusicXML</text>
+<rect x="170" y="514" width="296" height="62" fill="#ffffff" stroke="#000"/>
+<text x="177" y="531" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">1972 PC · Linux boot</text>
+<text x="177" y="547" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Ollama on the GPU, used</text>
+<text x="177" y="562" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">only by the plan arranger</text>
+<path d="M454 344 L474 344 L474 545 L466 545" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)" marker-start="url(#ah)"/>
+<path d="M90 474 L90 598" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+<text x="98" y="545" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start" font-style="italic">MusicXML</text>
+<rect x="15" y="601" width="452" height="206" fill="none" stroke="#ffffff"/>
+<rect x="14" y="600" width="452" height="206" fill="none" stroke="#808080"/>
+<rect x="22" y="592" width="250.79999999999998" height="16" fill="#c0c0c0"/>
+<text x="27" y="605" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Five staves, five performers</text>
+<rect x="26" y="616" width="428" height="30" fill="#ffffcc" stroke="#000"/>
+<text x="34" y="636" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Alto Sax</text>
+<text x="140" y="636" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">me, live: the melody</text>
+<rect x="26" y="652" width="428" height="30" fill="#ffffff" stroke="#000"/>
+<text x="34" y="672" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Harmony</text>
+<text x="140" y="672" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Game Boy pulse 1</text>
+<rect x="26" y="688" width="428" height="30" fill="#ffffff" stroke="#000"/>
+<text x="34" y="708" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Bass</text>
+<text x="140" y="708" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Game Boy pulse 2</text>
+<rect x="26" y="724" width="428" height="30" fill="#ffffff" stroke="#000"/>
+<text x="34" y="744" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Drum kit</text>
+<text x="140" y="744" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Game Boy wave (LSDj kit)</text>
+<rect x="26" y="760" width="428" height="30" fill="#ffffff" stroke="#000"/>
+<text x="34" y="780" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Shaker</text>
+<text x="140" y="780" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Game Boy noise</text></svg>

@@ -74,7 +74,7 @@ As much Markdown as the project deserves: paragraphs, lists, headings
 (use ## and below), links, `code`.
 ```
 
-Current `order`: platform `10`, 8 Bit Sax Lounge `20`, SaxFlash `30`. Leave
+Current `order`: platform `10`, 8 Bit Sax Lounge `20`, composer `25`, SaxFlash `30`. Leave
 gaps so a new project can slot in between without renumbering.
 
 **Diagrams** - an SVG beside the Markdown file, shown under the summary and
