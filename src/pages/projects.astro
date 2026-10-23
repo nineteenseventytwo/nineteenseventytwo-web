@@ -14,6 +14,21 @@ const rendered = await Promise.all(projects.map(async (p) => ({ p, Content: (awa
     <article class="entry">
       <h2>{p.data.title}</h2>
       <p><strong>{p.data.summary}</strong></p>
+      {p.data.diagram && (
+        <figure>
+          <a href={p.data.diagram.src}>
+            <img
+              src={p.data.diagram.src}
+              width={p.data.diagram.width}
+              height={p.data.diagram.height}
+              alt={p.data.diagramAlt}
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <figcaption>Tap the diagram for full size.</figcaption>
+        </figure>
+      )}
       <Content />
       {(p.data.url || p.data.repo) && (
         <p>

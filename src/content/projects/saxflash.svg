@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 700" width="480" height="700" role="img" aria-labelledby="t d"><title id="t">SaxFlash, the plan</title><desc id="d">A work-in-progress plan. A mic hears the alto saxophone, and a vibration sensor feels the horn being slapped. A small microcontroller runs an FFT on the sound, picks the note in the alto range (about 139 to 831 Hz), and lights LED strips soldered to the sax in that note's colour, one of twelve; a slap triggers a flash effect. A lithium battery pack through a step-down converter powers everything, so there is no cable to the wall.</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#000"/></marker></defs><rect x="1" y="1" width="478" height="698" fill="#c0c0c0"/>
+<path d="M1 699 V1 H479" fill="none" stroke="#ffffff" stroke-width="2"/>
+<path d="M1 699 H479 V1" fill="none" stroke="#404040" stroke-width="2"/>
+<rect x="5" y="5" width="470" height="24" fill="#000080"/>
+<text x="12" y="22" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="start">C:\SAXFLASH\PLAN.SVG</text>
+<rect x="410" y="8" width="18" height="17" fill="#c0c0c0"/>
+<path d="M410 25 V8 H428" fill="none" stroke="#ffffff" stroke-width="2"/>
+<path d="M410 25 H428 V8" fill="none" stroke="#404040" stroke-width="2"/>
+<text x="419" y="21" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">_</text>
+<rect x="432" y="8" width="18" height="17" fill="#c0c0c0"/>
+<path d="M432 25 V8 H450" fill="none" stroke="#ffffff" stroke-width="2"/>
+<path d="M432 25 H450 V8" fill="none" stroke="#404040" stroke-width="2"/>
+<text x="441" y="21" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">□</text>
+<rect x="450" y="8" width="18" height="17" fill="#c0c0c0"/>
+<path d="M450 25 V8 H468" fill="none" stroke="#ffffff" stroke-width="2"/>
+<path d="M450 25 H468 V8" fill="none" stroke="#404040" stroke-width="2"/>
+<text x="459" y="21" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">×</text>
+<rect x="14" y="44" width="452" height="34" fill="#ffff00" stroke="#000"/>
+<text x="21" y="61" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">⚠ UNDER CONSTRUCTION · a plan, not a build yet</text>
+<rect x="15" y="99" width="452" height="92" fill="none" stroke="#ffffff"/>
+<rect x="14" y="98" width="452" height="92" fill="none" stroke="#808080"/>
+<rect x="22" y="90" width="61.599999999999994" height="16" fill="#c0c0c0"/>
+<text x="27" y="103" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Senses</text>
+<rect x="26" y="114" width="208" height="62" fill="#ffffff" stroke="#000"/>
+<text x="33" y="131" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Mic</text>
+<text x="33" y="147" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Hears the sax</text>
+<rect x="246" y="114" width="208" height="62" fill="#ffffff" stroke="#000"/>
+<text x="253" y="131" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Vibration sensor</text>
+<text x="253" y="147" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Feels a slap on the horn</text>
+<path d="M200 176 L200 228" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+<text x="208" y="202" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start" font-style="italic">audio</text>
+<path d="M350 176 L350 228" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+<text x="358" y="202" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start" font-style="italic">bump</text>
+<rect x="15" y="213" width="452" height="154" fill="none" stroke="#ffffff"/>
+<rect x="14" y="212" width="452" height="154" fill="none" stroke="#808080"/>
+<rect x="22" y="204" width="139.0" height="16" fill="#c0c0c0"/>
+<text x="27" y="217" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Microcontroller</text>
+<rect x="26" y="228" width="428" height="60" fill="#ffffcc" stroke="#000"/>
+<text x="33" y="245" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">FFT → note</text>
+<text x="33" y="261" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Alto range: Db3–Ab5, about 139–831 Hz</text>
+<text x="33" y="276" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Strongest pitch → one of 12 note colours</text>
+<rect x="26" y="298" width="428" height="56" fill="#ffffcc" stroke="#000"/>
+<text x="33" y="315" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Slap → effect</text>
+<text x="33" y="331" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">A flash/sparkle over whatever note is playing</text>
+<path d="M400 354 L400 414" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+<text x="392" y="392" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="end" font-style="italic">colour data</text>
+<rect x="15" y="397" width="452" height="112" fill="none" stroke="#ffffff"/>
+<rect x="14" y="396" width="452" height="112" fill="none" stroke="#808080"/>
+<rect x="22" y="388" width="302.4" height="16" fill="#c0c0c0"/>
+<text x="27" y="401" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">LED strips, soldered along the sax</text>
+<rect x="26.0" y="414" width="35.7" height="44" fill="#ff0000" stroke="#000"/>
+<text x="43.83333333333333" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">C</text>
+<rect x="61.7" y="414" width="35.7" height="44" fill="#ff6000" stroke="#000"/>
+<text x="79.5" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">C#</text>
+<rect x="97.3" y="414" width="35.7" height="44" fill="#ffa000" stroke="#000"/>
+<text x="115.16666666666666" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">D</text>
+<rect x="133.0" y="414" width="35.7" height="44" fill="#ffe000" stroke="#000"/>
+<text x="150.83333333333334" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">D#</text>
+<rect x="168.7" y="414" width="35.7" height="44" fill="#a0ff00" stroke="#000"/>
+<text x="186.5" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">E</text>
+<rect x="204.3" y="414" width="35.7" height="44" fill="#00e000" stroke="#000"/>
+<text x="222.16666666666666" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">F</text>
+<rect x="240.0" y="414" width="35.7" height="44" fill="#00e0a0" stroke="#000"/>
+<text x="257.8333333333333" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">F#</text>
+<rect x="275.7" y="414" width="35.7" height="44" fill="#00c0ff" stroke="#000"/>
+<text x="293.49999999999994" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">G</text>
+<rect x="311.3" y="414" width="35.7" height="44" fill="#0060ff" stroke="#000"/>
+<text x="329.16666666666663" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">G#</text>
+<rect x="347.0" y="414" width="35.7" height="44" fill="#4000ff" stroke="#000"/>
+<text x="364.8333333333333" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">A</text>
+<rect x="382.7" y="414" width="35.7" height="44" fill="#a000ff" stroke="#000"/>
+<text x="400.49999999999994" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">A#</text>
+<rect x="418.3" y="414" width="35.7" height="44" fill="#ff00c0" stroke="#000"/>
+<text x="436.16666666666663" y="478" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">B</text>
+<text x="240" y="498" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="middle" font-style="italic">one colour per note, whatever the octave</text>
+<rect x="15" y="531" width="452" height="150" fill="none" stroke="#ffffff"/>
+<rect x="14" y="530" width="452" height="150" fill="none" stroke="#808080"/>
+<rect x="22" y="522" width="250.79999999999998" height="16" fill="#c0c0c0"/>
+<text x="27" y="535" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Power · no cable to the wall</text>
+<rect x="26" y="548" width="190" height="58" fill="#ffffff" stroke="#000"/>
+<text x="33" y="565" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Lithium pack</text>
+<text x="33" y="581" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Rechargeable,</text>
+<text x="33" y="596" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">rides on the strap</text>
+<rect x="264" y="548" width="190" height="58" fill="#ffffff" stroke="#000"/>
+<text x="271" y="565" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">Step-down</text>
+<text x="271" y="581" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Battery volts →</text>
+<text x="271" y="596" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">5 V for LEDs + MCU</text>
+<path d="M216 577 L264 577" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+<text x="240" y="638" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="middle" font-style="italic">Everything on the horn runs off the pack,</text>
+<text x="240" y="656" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="middle" font-style="italic">so it plays like a normal sax: no tether.</text></svg>

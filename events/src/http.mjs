@@ -1,6 +1,6 @@
 // The only way the gig job touches the network (plan 09, F9):
 //   - identifies itself, with a link to a page on the site that says what it
-//     is and how to opt out (not the repo, which is private - ADR-0019)
+//     is and how to opt out - written for a venue, not a developer
 //   - honours robots.txt for its own name and for *
 //   - one request at a time, per-host delay = max(Crawl-delay, 3s)
 //   - conditional requests (ETag / Last-Modified), so an unchanged listing
