@@ -66,15 +66,30 @@ title: SaxFlash
 summary: One sentence, shown in bold under the title.
 order: 10                                    # lower comes first; ties sort by title
 url: https://example.com                     # optional - "visit" link
-repo: https://github.com/nineteenseventytwo/... # optional - "source" link
+repo: https://github.com/...       # optional - "source" link. The lab's own
+                                    # projects use a diagram instead (below)
 ---
 
 As much Markdown as the project deserves: paragraphs, lists, headings
 (use ## and below), links, `code`.
 ```
 
-Current `order`: platform is `30`. Leave gaps (10, 20, 30) so a new project can
-slot in between without renumbering.
+Current `order`: platform `10`, 8 Bit Sax Lounge `20`, SaxFlash `30`. Leave
+gaps so a new project can slot in between without renumbering.
+
+**Diagrams** - an SVG beside the Markdown file, shown under the summary and
+linked to full size:
+
+```markdown
+diagram: ./platform.svg
+diagramAlt: What the diagram shows, in a sentence or three - read aloud in its place
+```
+
+- Draw it about 480 wide and tall rather than wide: on a phone it shrinks to
+  the screen width, so a wide diagram becomes unreadable.
+- No `<style>` and no `style="..."` inside the SVG (the CSP again) - use
+  attributes like `fill="#c0c0c0"` and `font-size="13"`.
+- The build fails if there is a `diagram` without `diagramAlt`.
 
 ## Gigs - `events/` and `src/content/gigs/`
 

@@ -32,16 +32,24 @@ const anime = defineCollection({
       }),
 });
 
+// A diagram stands in for a source link: the architecture is the part worth
+// showing, and it reads on a phone where a repo does not. Like a screenshot,
+// it needs alt text - an SVG's own <title> is not read out when it is an <img>.
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
-  schema: z.object({
-    title: z.string(),
-    summary: z.string(),
-    // Lower first. Ties sort by title.
-    order: z.number().int(),
-    url: z.url().optional(),
-    repo: z.url().optional(),
-  }),
+  schema: ({ image }) =>
+    z
+      .object({
+        title: z.string(),
+        summary: z.string(),
+        // Lower first. Ties sort by title.
+        order: z.number().int(),
+        url: z.url().optional(),
+        repo: z.url().optional(),
+        diagram: image().optional(),
+        diagramAlt: z.string().optional(),
+      })
+      .refine((p) => !p.diagram || p.diagramAlt, { message: 'a diagram needs diagramAlt' }),
 });
 
 // Gigs I've been to. One Markdown file per show; the body is a few words

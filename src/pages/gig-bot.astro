@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="The gig bot" description="What the sev-gig-list crawler is, what it reads, and how to ask it to stop.">
+  <h1>The gig bot</h1>
+  <p>
+    If <code>sev-gig-list</code> turned up in your logs: it's me. Once a week it reads the public
+    listings of a handful of East London venues so the <a href="/events/">Gigs</a> page here can show
+    what's on near me.
+  </p>
+  <h2>How it behaves</h2>
+  <ul>
+    <li>One run a week, one request at a time, never in parallel.</li>
+    <li>It honours <code>robots.txt</code>, including <code>Crawl-delay</code>, and waits at least three seconds between requests to the same site regardless.</li>
+    <li>It sends conditional requests, so an unchanged page costs you a <code>304</code>.</li>
+    <li>It reads listing pages only - titles, dates, times and links - and links back to your own page for every gig.</li>
+  </ul>
+  <h2>Asking it to stop</h2>
+  <p>
+    Add <code>User-agent: sev-gig-list</code> with <code>Disallow: /</code> to your <code>robots.txt</code>; the
+    next run will skip you and record why.
+  </p>
+</Base>

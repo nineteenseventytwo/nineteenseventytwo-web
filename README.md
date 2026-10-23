@@ -6,8 +6,8 @@ deliberately 1996 visual register.
 
 Static, built with Astro, served from S3 + CloudFront in `platform-prod`. The
 infrastructure lives in `nineteenseventytwo-cloud`; the plan is
-[`docs/plan/09-website.md`](https://github.com/nineteenseventytwo/nineteenseventytwo-platform/blob/main/docs/plan/09-website.md)
-in `nineteenseventytwo-platform`.
+`docs/plan/09-website.md` in `nineteenseventytwo-platform`, and the decisions
+behind it are platform ADR-0018.
 
 ## Working on it
 

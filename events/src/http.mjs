@@ -1,5 +1,6 @@
 // The only way the gig job touches the network (plan 09, F9):
-//   - identifies itself, with a link back to this repo
+//   - identifies itself, with a link to a page on the site that says what it
+//     is and how to opt out - written for a venue, not a developer
 //   - honours robots.txt for its own name and for *
 //   - one request at a time, per-host delay = max(Crawl-delay, 3s)
 //   - conditional requests (ETag / Last-Modified), so an unchanged listing
@@ -10,7 +11,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 
 export const USER_AGENT =
-  'sev-gig-list/1.0 (+https://github.com/nineteenseventytwo/nineteenseventytwo-web; weekly, one request at a time)';
+  'sev-gig-list/1.0 (+https://sev.eightbitsaxlounge.com/gig-bot/; weekly, one request at a time)';
 const AGENT_TOKEN = 'sev-gig-list';
 const MIN_DELAY_MS = 3000;
 const TIMEOUT_MS = 20000;
