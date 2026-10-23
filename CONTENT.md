@@ -66,7 +66,8 @@ title: SaxFlash
 summary: One sentence, shown in bold under the title.
 order: 10                                    # lower comes first; ties sort by title
 url: https://example.com                     # optional - "visit" link
-repo: https://github.com/nineteenseventytwo/... # optional - "source" link
+repo: https://github.com/...       # optional - "source" link, for public code only
+                                    # (the nineteenseventytwo repos are private)
 ---
 
 As much Markdown as the project deserves: paragraphs, lists, headings
