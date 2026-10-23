@@ -9,8 +9,4 @@ diagramAlt: A viewer types a command such as !engine room in Twitch chat. The ch
 Type `!engine room` in chat and the reverb on my saxophone changes, live, a
 second later - and the overlay on the stream shows who did it.
 
-It is deliberately overengineered: what could be one script is six services
-across a Raspberry Pi cluster and a PC, because the point was to learn how
-real systems are put together. Chat commands become MIDI messages to a real
-Ventris Dual Reverb pedal; every change is saved, so the pedal, the database
-and the overlay agree on what is playing.
+ What's that, set 'Time' to 9? Sure why not -> the chat bot queues a task that shifts my physical pedal's midi values in real time. An over-engineered microservice architecture that puts the viewer on stage, messing with my equipment. Fab!

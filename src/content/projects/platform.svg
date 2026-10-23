@@ -72,7 +72,7 @@
 <text x="45" y="517" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Interactive Twitch stream</text>
 <rect x="246" y="484" width="198" height="54" fill="#ffffcc" stroke="#000"/>
 <text x="253" y="501" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">composer</text>
-<text x="253" y="517" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Sketches music via LLM</text>
+<text x="253" y="517" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Game music to bossa nova</text>
 <rect x="26" y="566" width="428" height="66" fill="#ffffff" stroke="#000"/>
 <text x="33" y="583" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#000" text-anchor="start">1972 PC · x86, dual boot</text>
 <text x="33" y="599" font-family="Verdana, Geneva, Tahoma, sans-serif" font-size="12" font-weight="normal" fill="#000" text-anchor="start">Windows: OBS + MIDI device service (8BSL)</text>
