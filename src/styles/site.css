@@ -88,6 +88,40 @@ body {
   text-shadow: 3px 3px 0 var(--gold);
 }
 
+/* The hit counter: odometer digits in bevelled black boxes. */
+.counter {
+  margin: 1.5rem 0 0;
+  text-align: center;
+  font-family: var(--fun-font);
+}
+
+.counter p {
+  margin: 0.25rem 0;
+}
+
+.counter__digits {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--shadow);
+  border: 2px solid;
+  border-color: var(--shadow) var(--hi) var(--hi) var(--shadow);
+}
+
+.counter__digit {
+  min-width: 1.4em;
+  padding: 0.1em 0.2em;
+  background: #000;
+  color: #00ff00;
+  font-family: var(--mono-font);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.counter__label {
+  font-size: 0.85rem;
+}
+
 /* <marquee>, without <marquee>. */
 .ticker {
   overflow: hidden;
