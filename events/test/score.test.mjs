@@ -19,6 +19,14 @@ test('exact favourites match a whole act only', () => {
   assert.equal(s('Hum and Strum Folk Night').score, 0);
 });
 
+test('exact favourites: a comma inside a band name is not a lineup split', () => {
+  // the adapters' splitLineup('hey, nothing') gives ['hey', 'nothing']
+  assert.equal(s('hey, nothing', { lineup: ['hey', 'nothing'] }).score, 0);
+  // a performer list (JSON-LD) still counts when the title is a tour name
+  assert.equal(s('Autumn Tour 2026', { lineup: ['Nothing', 'Whirr'] }).score, FAVOURITE_WEIGHT);
+  assert.equal(s('Nothing (UK only show) w/ Whirr', { lineup: ['Nothing (UK only show)', 'Whirr'] }).score, FAVOURITE_WEIGHT);
+});
+
 test('other favourites match anywhere, punctuation-insensitive', () => {
   assert.deepEqual(s('An Evening with The Darkness').reasons, ['favourite: The Darkness']);
   assert.equal(s('FM 84 + Timecop1983').score, FAVOURITE_WEIGHT);
