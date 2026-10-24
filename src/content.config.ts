@@ -61,8 +61,13 @@ const gigs = defineCollection({
     z
       .object({
         title: z.string(),
-        date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD'),
-        venue: z.string(),
+        // YAML reads an unquoted 2026-10-22 as a Date; take either form.
+        date: z.preprocess(
+          (d) => (d instanceof Date ? d.toISOString().slice(0, 10) : d),
+          z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'date must be YYYY-MM-DD'),
+        ),
+        // Optional: older photos don't always say where they were taken.
+        venue: z.string().optional(),
         photo: image().optional(),
         photoAlt: z.string().optional(),
       })

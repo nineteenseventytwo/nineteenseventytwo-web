@@ -41,7 +41,7 @@ const fmt = (d: string) =>
     {attended.map(({ gig, Content }) => (
       <article class="entry">
         <h3>{gig.data.title}</h3>
-        <p class="gig__meta">{fmt(gig.data.date)} · {gig.data.venue}</p>
+        <p class="gig__meta">{fmt(gig.data.date)}{gig.data.venue && ` · ${gig.data.venue}`}</p>
         {gig.data.photo && (
           <figure>
             <Image
