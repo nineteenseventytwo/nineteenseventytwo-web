@@ -1,0 +1,12 @@
+---
+// A 90s hit counter, from /counter.json (written daily by the visitors
+// workflow). Hidden until the number arrives: no number, no counter, rather
+// than a row of zeros. The script is a file, not inline (CSP).
+---
+
+<div class="counter" id="visitors" data-src="/counter.json" hidden>
+  <p>You are one of</p>
+  <p class="counter__digits" aria-hidden="true"></p>
+  <p class="counter__label"></p>
+</div>
+<script type="module" src="/js/counter.js" is:inline></script>
