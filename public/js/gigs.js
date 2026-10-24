@@ -36,7 +36,7 @@ function daysAgo(iso) {
   return Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
 }
 
-function gigItem(e, { detailed }) {
+function gigItem(e, { detailed, showVenue = true }) {
   const li = el('li', 'gig' + (e.score > 0 ? ' gig--pick' : ''));
   li.append(el('span', 'gig__when', fmtDate(e.date) + (e.time ? ` ${e.time}` : '')));
 
@@ -52,7 +52,8 @@ function gigItem(e, { detailed }) {
   }
   li.append(title);
 
-  if (e.venue) li.append(el('span', 'gig__venue', e.venue + (e.format === 'dj' ? ' · DJ night' : '')));
+  const where = [showVenue && e.venue, e.format === 'dj' && 'DJ night'].filter(Boolean).join(' · ');
+  if (where) li.append(el('span', 'gig__venue', where));
 
   if (e.reasons?.length) {
     const chips = el('span', 'gig__chips');
@@ -92,10 +93,15 @@ function render(data) {
     root.append(ul);
   }
   if (noteworthy.length) {
-    root.append(el('h3', null, `Noteworthy (${noteworthy.length})`));
-    const ul = el('ul', 'gigs');
-    for (const e of noteworthy) ul.append(gigItem(e, { detailed: false }));
-    root.append(ul);
+    const total = noteworthy.reduce((n, g) => n + g.events.length + g.more, 0);
+    root.append(el('h3', null, `Noteworthy (${total})`));
+    for (const g of noteworthy) {
+      root.append(el('h4', 'gigs__venue', g.venue));
+      const ul = el('ul', 'gigs');
+      for (const e of g.events) ul.append(gigItem(e, { detailed: false, showVenue: false }));
+      root.append(ul);
+      if (g.more) root.append(el('p', 'gigs__more', `+ ${g.more} more here - see "Everything" below.`));
+    }
   }
 
   const details = el('details', 'gigs__all');

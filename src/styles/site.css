@@ -310,6 +310,18 @@ pre {
   background: var(--hot);
 }
 
+.gigs__venue {
+  margin: 1rem 0 0.25rem;
+  font-family: var(--fun-font);
+  color: #000080;
+}
+
+.gigs__more {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
 .gigs__all summary {
   cursor: pointer;
   font-family: var(--fun-font);

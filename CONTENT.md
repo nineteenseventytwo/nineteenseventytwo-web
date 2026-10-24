@@ -124,7 +124,7 @@ Changes to these files take effect on the next run - merge, then run the
 ---
 title: Hikikomori + Inner City Holdings
 date: 2026-10-22
-venue: Blondies
+venue: Blondies                       # optional
 photo: ./2026-10-22-hikikomori.jpg    # optional, next to this file
 photoAlt: The band on Blondies' stage under red light   # required with a photo
 ---
