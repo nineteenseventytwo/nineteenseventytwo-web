@@ -23,6 +23,18 @@ const wordRe = (phrase) => new RegExp(`(^| )${escape(normalize(phrase))}( |$)`);
 
 export const FAVOURITE_WEIGHT = 10;
 
+// Separators that always divide acts. Not commas: the adapters' lineup split
+// does use them ("A, B, C" is how OTO lists a bill), but a comma is also part
+// of band names - "hey, nothing" split there made a whole act called
+// "nothing", and the favourite Nothing with it (2026-10-24).
+const STRONG_SPLIT = /\s(?:\+|&|\/|\||x|w\/|with|feat\.?|ft\.?|vs\.?|presents:?|support(?:ed by)?:?)\s|:\s|\s[–—-]\s/i;
+const strongActs = (title) =>
+  String(title ?? '')
+    .replace(/\(.*?\)/g, ' ')
+    .split(STRONG_SPLIT)
+    .map(normalize)
+    .filter(Boolean);
+
 export class RulesScorer {
   constructor(watchlist) {
     this.artists = (watchlist.artists ?? []).map((a) => {
@@ -47,11 +59,14 @@ export class RulesScorer {
 
     const acts = (event.lineup ?? []).map(normalize);
     const title = normalize(event.title);
+    const wholeActs = strongActs(event.title);
     for (const a of this.artists) {
-      // Ordinary-word names ("Nothing", "Hum") must be a whole act; anything
+      // Ordinary-word names ("Nothing", "Hum") must be a whole act: the whole
+      // title, a whole act between unambiguous separators, or a listed
+      // performer the title does not use as part of a longer name. Anything
       // else may appear anywhere in the title or lineup.
       const hit = a.exact
-        ? acts.includes(a.norm) || title === a.norm
+        ? title === a.norm || wholeActs.includes(a.norm) || (acts.includes(a.norm) && !a.re.test(title))
         : acts.some((act) => a.re.test(act)) || a.re.test(title);
       if (hit) {
         score += FAVOURITE_WEIGHT;
