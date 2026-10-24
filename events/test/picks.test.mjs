@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { choosePicks } from '../../public/js/picks.js';
 
+const flat = (groups) => groups.flatMap((g) => g.events);
 const ev = (venue, score, date, reasons = ['saxophone']) => ({ venue, score, date, reasons, title: `${venue} ${date}` });
 
 test('at most 2 per venue; the overflow becomes noteworthy, in date order', () => {
@@ -11,16 +12,16 @@ test('at most 2 per venue; the overflow becomes noteworthy, in date order', () =
   ];
   const { picks, noteworthy } = choosePicks(events);
   assert.deepEqual(picks.map((e) => e.title), ['Vortex 2026-10-21', 'Vortex 2026-10-22', 'Oslo 2026-10-25']);
-  assert.deepEqual(noteworthy.map((e) => e.title), ['Vortex 2026-10-20', 'Vortex 2026-10-23']);
+  assert.deepEqual(flat(noteworthy).map((e) => e.title), ['Vortex 2026-10-20', 'Vortex 2026-10-23']);
   // unscored gigs are neither
-  assert.ok(![...picks, ...noteworthy].some((e) => e.venue === 'EartH'));
+  assert.ok(![...picks, ...flat(noteworthy)].some((e) => e.venue === 'EartH'));
 });
 
 test('never more than 10 picks', () => {
   const events = Array.from({ length: 30 }, (_, i) => ev(`Venue ${i}`, 3, `2026-11-${String((i % 28) + 1).padStart(2, '0')}`));
   const { picks, noteworthy } = choosePicks(events);
   assert.equal(picks.length, 10);
-  assert.equal(noteworthy.length, 20);
+  assert.equal(flat(noteworthy).length, 20);
 });
 
 test('favourites lead and sit outside the per-venue cap', () => {
@@ -32,7 +33,7 @@ test('favourites lead and sit outside the per-venue cap', () => {
   const { picks, noteworthy } = choosePicks(events);
   // both favourites, then EartH's two best others; the third other overflows
   assert.deepEqual(picks.map((e) => e.date), ['2026-11-01', '2026-11-02', '2026-10-21', '2026-10-22']);
-  assert.deepEqual(noteworthy.map((e) => e.date), ['2026-10-23']);
+  assert.deepEqual(flat(noteworthy).map((e) => e.date), ['2026-10-23']);
 });
 
 test('DJ nights never make Picks, however well they score - they go to Noteworthy', () => {
@@ -44,5 +45,22 @@ test('DJ nights never make Picks, however well they score - they go to Noteworth
   ];
   const { picks, noteworthy } = choosePicks(events);
   assert.deepEqual(picks.map((e) => e.venue), ['EartH', 'Oslo']);
-  assert.deepEqual(noteworthy.map((e) => e.venue), ['Shacklewell', 'Paper Dress']);
+  // grouped by venue, venues A-Z
+  assert.deepEqual(noteworthy.map((g) => g.venue), ['Paper Dress', 'Shacklewell']);
+});
+
+test('Noteworthy: grouped by venue, at most 5 each (the best), the rest counted', () => {
+  // Vortex: 2 picks, then 7 overflow scoring 1..7; Oslo: 2 picks, 1 overflow
+  const events = [
+    ev('Vortex', 9, '2026-11-01'), ev('Vortex', 9, '2026-11-02'),
+    ...[1, 2, 3, 4, 5, 6, 7].map((s) => ev('Vortex', s, `2026-12-0${s}`)),
+    ev('Oslo', 9, '2026-11-03'), ev('Oslo', 9, '2026-11-04'), ev('Oslo', 1, '2026-11-20'),
+  ];
+  const { noteworthy } = choosePicks(events);
+  assert.deepEqual(noteworthy.map((g) => g.venue), ['Oslo', 'Vortex']);
+  const vortex = noteworthy[1];
+  // the five best (scores 7..3), shown in date order; the two weakest counted
+  assert.deepEqual(vortex.events.map((e) => e.date), ['2026-12-03', '2026-12-04', '2026-12-05', '2026-12-06', '2026-12-07']);
+  assert.equal(vortex.more, 2);
+  assert.equal(noteworthy[0].more, 0);
 });

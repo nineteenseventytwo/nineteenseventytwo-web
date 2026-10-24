@@ -18,6 +18,13 @@ venues:
     url: https://www.alttickets.com/venue/london/oslo
     adapter: jsonld
 
+  - id: the-garage
+    name: The Garage
+    # thegarage.london is a Linktree; its "what's on" is this alttickets page,
+    # the same platform (and adapter) as Oslo.
+    url: https://www.alttickets.com/venue/london/the-garage
+    adapter: jsonld
+
   - id: vortex
     name: Vortex Jazz Club
     url: https://www.vortexjazz.co.uk/events/?ical=1
