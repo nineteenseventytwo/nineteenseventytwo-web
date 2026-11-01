@@ -101,7 +101,7 @@ run it by hand from the Actions tab). Three files steer it:
   lineup, half that if only in the description. Ordinary-word artist names
   (`Nothing`, `Hum`) need `exact: true`.
 - `events/config/venues.yaml` - which venues are read, and how.
-- `events/manual-events.yaml` - gigs to add by hand (Shacklewell, MOTH, SJQ,
+- `events/manual-events.yaml` - gigs to add by hand (SJQ,
   open mics, anything off Instagram):
 
 ```yaml

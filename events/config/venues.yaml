@@ -5,13 +5,12 @@
 # breaks when the venue redesigns, which the job reports rather than hides.
 #
 # Not here, and why (2026-10 survey):
-#   Shacklewell Arms, MOTH  listings exist only as DICE's embeddable widget,
-#                           driven by an API key issued to the venue. Their
-#                           dice.fm venue pages would work with the
-#                           dice-venue adapter - add them below if Blondies'
-#                           does. Until then: manual-events.yaml.
-#   SJQ                     programme is an Elfsight widget, same problem.
+#   SJQ                     programme is an Elfsight widget, so it can't be read.
 #   anything else           manual-events.yaml
+#
+# dice-venue pages (Blondies, Shacklewell, MOTH) only render the next 30
+# events server-side; the rest load in the browser. For a busy venue that's
+# about four weeks ahead - later gigs show up as the weekly run reaches them.
 venues:
   - id: oslo
     name: Oslo
@@ -52,4 +51,14 @@ venues:
   - id: blondies
     name: Blondies
     url: https://dice.fm/venue/blondies-rmvw
+    adapter: dice-venue
+
+  - id: shacklewell
+    name: Shacklewell Arms
+    url: https://dice.fm/venue/the-shacklewell-arms-z82z
+    adapter: dice-venue
+
+  - id: moth
+    name: MOTH Club
+    url: https://dice.fm/venue/moth-club-43ox
     adapter: dice-venue
