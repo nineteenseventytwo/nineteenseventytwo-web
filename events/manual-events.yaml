@@ -12,24 +12,44 @@
 #     note: Seen on their Instagram   # optional, shown on the page
 
 events:
-  # ---- Shacklewell Arms, October 2026 calendar (their Instagram) ----------
-  # Transcribed from the monthly poster; promoter and "free entry" in the
-  # note. (CLUB) nights are the late slot after the gig.
-  - { title: 7EBRA + Louis Grace, date: 2026-10-21, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations" }
-  - { title: Uche Yara, date: 2026-10-22, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "FORM" }
-  - { title: "Drum Tower + Gloop Unit + Dogs Of…", date: 2026-10-23, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Infinity Farm. Third act's name is cut off on the poster." }
-  - { title: "Sweet Dreams Soul & Disco (club night)", date: 2026-10-23, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Free entry" }
-  - { title: "October All-Dayer: 1000 Legs", date: 2026-10-24, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
-  - { title: "Scared To Dance: special guests TBA (club night)", date: 2026-10-24, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
-  - { title: The Jump Cuts + special guests, date: 2026-10-25, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
-  - { title: Divebar Youth + special guests, date: 2026-10-26, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
-  - { title: Nina Winder-Lind & Heka, date: 2026-10-27, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bird on the Wire" }
-  - { title: Cheerless + Mannequin Flowers, date: 2026-10-28, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
-  - { title: Painting + The Fruit Band + Degurutieni, date: 2026-10-29, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
-  - { title: Flowers For The Dead + What Jen Wants, date: 2026-10-30, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
-  - { title: "Scared To Dance: guest DJ Molly Payton (club night)", date: 2026-10-30, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
-  - { title: Tom Rowley + TBC, date: 2026-10-31, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "SJM" }
-  - { title: "A Love Letter To: Boy Harsher (club night)", date: 2026-10-31, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "A Boy Harsher club night - darkwave" }
+  # ---- Shacklewell Arms, November 2026 calendar (their Instagram) ---------
+  # Transcribed from the monthly poster; promoter, "free entry" and "sold
+  # out" in the note. (CLUB) nights are the late slot after the gig.
+  - { title: "Georgian + Jules Smith", date: 2026-11-01, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: "Konradsen + Edie Bens", date: 2026-11-02, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "FORM" }
+  - { title: "Hideous Panda + Sounds Mint + Cutflowers + Slak", date: 2026-11-03, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Fierce Panda. Free entry" }
+  - { title: "Superfriends + Fern Veh + Highstone", date: 2026-11-04, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Triples Is Best. Free entry" }
+  - { title: "Dééfait + The Eurosuite", date: 2026-11-05, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: "Tony Bontana + Shayk", date: 2026-11-06, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations" }
+  - { title: "Diva Dungeon Deep Dive (club night)", date: 2026-11-06, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
+  - { title: "Pitchfork", date: 2026-11-07, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Pitchfork" }
+  - { title: "Dance Yrself Clean (club night)", date: 2026-11-07, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
+  - { title: "Fade Evare + Corin V", date: 2026-11-09, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: "Big Softy", date: 2026-11-10, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Percolate Live" }
+  - { title: "The Gnomes", date: 2026-11-11, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations" }
+  - { title: "State of Grace + Spanish Horses + Angelface", date: 2026-11-12, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "So Young. Sold out" }
+  - { title: "Martial Arts", date: 2026-11-13, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Joy Concerts" }
+  - { title: "Algorithm of the Night (club night)", date: 2026-11-13, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
+  - { title: "Mapache + Eh Mertxe! + Tobogán", date: 2026-11-14, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Garageland. Free entry" }
+  - { title: "Nü Wavved (club night)", date: 2026-11-14, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
+  - { title: "The Grass Museum + Rampressure + The Wheel 2!", date: 2026-11-15, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "LNZRT" }
+  - { title: "Fu Yang + Vim", date: 2026-11-17, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Flashback Records. Free entry" }
+  - { title: "Genevieve Miles + Loxie + Issa Odyssea", date: 2026-11-18, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "LNZRT" }
+  - { title: "La Élite + Ice Baths", date: 2026-11-19, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations" }
+  - { title: "Slag + Belcher", date: 2026-11-20, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Sold out" }
+  - { title: "C.O.F.F.I.N DJ set (club night)", date: 2026-11-20, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Free entry" }
+  - { title: "Small Pleasures + Blousey", date: 2026-11-21, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: "Scared To Dance: Elis James (club night)", date: 2026-11-21, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
+  - { title: "The Tambourines", date: 2026-11-22, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: "Berthaju", date: 2026-11-23, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: "Paycheque + Fiscal Harm", date: 2026-11-24, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: "Cordelia Gartside", date: 2026-11-25, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations" }
+  - { title: "Fatberg", date: 2026-11-26, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: "Pyncher + Cam Davey", date: 2026-11-27, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Communion One" }
+  - { title: "Sweet Dreams Soul & Disco (club night)", date: 2026-11-27, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Free entry" }
+  - { title: "My Precious Bunny + Lindown Man + Scouts + Sugar Tax + Limes", date: 2026-11-28, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Bad Vibrations. Free entry" }
+  - { title: "A Love Letter To: Daft Punk & Justice (club night)", date: 2026-11-28, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events" }
+  - { title: "Jaded + French Toast + 5:40 Fantasy", date: 2026-11-30, venue: Shacklewell Arms, url: "https://www.shacklewellarms.com/events", note: "Sick Girl. Free entry" }
 
 # Regular nights - open mics, residencies. The job turns each into dates
 # within its window. Either weekly (`day` only) or monthly (`day` + `nth`:
